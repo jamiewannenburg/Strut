@@ -48,6 +48,7 @@ function(Backbone, SlideWell, OperatingTable, MarkdownEditor) {
 			} else if (mode == 'preview') {
 				this.model.activeSlide().set('markdown', this._markdownEditor.getValue());
 				this._markdownEditor.hide();
+                this.model._editorModel.registry.emit('jamiewannenburg:updateMath');
 			} else {
 				throw "Illegal mode";
 			}

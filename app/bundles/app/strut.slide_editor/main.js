@@ -6,7 +6,6 @@ function(SlideEditorModel, SlideEditorView, ModeButton, Button) {
 	var service = {
 		getMode: function(editorModel, registry) {
 			var model = new SlideEditorModel({editorModel: editorModel});
-
 			return {
 				view: new SlideEditorView({model: model, registry: registry}),
 				model: model,

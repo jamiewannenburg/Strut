@@ -20,32 +20,6 @@
 		<!-- endbuild -->
 
 		<!-- can't build this in due to font imports -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({
-            /*TeX: {
-                Macros: {
-                    bdot: "\\mathbin{\\boldsymbol{\\cdot}}"
-                }
-            },
-            MatchWebFonts: {
-                matchFor: {
-                  "HTML-CSS": true,
-                  NativeMML: false,
-                }
-            },*/
-            tex2jax: {
-                inlineMath: [['$','$'], ['\\(','\\)']],
-                displayMath: [ 
-                    ['$$','$$'], 
-                    //['\[','\]'],
-                    ['\begin{equation}','\end{equation}'],
-                    ['\begin{equation*}','\end{equation*}'] 
-                ],
-                processEnvironments: true
-            }
-        });
-        </script>
 		<link rel="stylesheet" href="preview_export/reveal/css/theme/default.css"></link>
 
 		<link rel="shortcut icon" href="img/strut-icon.png">

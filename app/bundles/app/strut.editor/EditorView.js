@@ -20,12 +20,12 @@ function(Backbone, Header, CustomBgStylesheet) {
 				this.$el.append(activeMode.view.render().$el);
 			else
 				this._renderNoMode();
-
 			return this;
 		},
 
 		_modeChanged: function(undefined, mode) {
 			this.$el.append(mode.view.render().$el);
+            this.model.registry.emit('jamiewannenburg:updateMath');
 		},
 
 		_renderNoMode: function() {

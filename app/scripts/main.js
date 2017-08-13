@@ -54,7 +54,9 @@ require.config({
 		'tantaman/web/undo_support': '../bundles/common/tantaman.web.undo_support',
 		'tantaman/web/interactions': '../bundles/common/tantaman.web.interactions',
 		'tantaman/web/widgets': '../bundles/common/tantaman.web.widgets',
-		'tantaman/web/css_manip': '../bundles/common/tantaman.web.css_manip'
+		'tantaman/web/css_manip': '../bundles/common/tantaman.web.css_manip',
+		'mathjax': 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
+		'jamiewannenburg/web/mathjax': '../bundles/common/jamiewannenburg.web.mathjax',
 		// end build - rmap
 	},
 

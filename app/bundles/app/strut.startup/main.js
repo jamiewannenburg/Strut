@@ -8,6 +8,7 @@ function(EditorView, EditorModel) {
     		var editor = new EditorView({model: model, registry: registry});
     		editor.render();
     		$('body').append(editor.$el);
+			registry.emit('jamiewannenburg:updateMath');
 
     		if (sessionMeta.lastPresentation != null) {
     			// Load it up.
