@@ -14,6 +14,7 @@ define({
 	image: 'صورة',
 	video: 'فيديو',
 	website: 'موقع ويب',
+	svg: 'SVG',
 	present: 'الحاضر',
 	export: 'تصدير...',
 	import: 'استيراد...',

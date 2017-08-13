@@ -14,6 +14,7 @@ define({
 	image: 'Bild',
 	video: 'Video',
 	website: 'Webseite',
+	svg: 'SVG',
 	present: 'Präsentieren',
 	export: 'Exportieren...',
 	import: 'Importieren...',

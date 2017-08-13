@@ -13,7 +13,9 @@ define(['./view/ComponentButton',
 	'./view/ShapesDropdown',
 	'./ShapeCollection',
 	'./view/ShapeView',
-	'./model/Shape'],
+	'./model/Shape',
+    './view/SVGView',
+    './model/SVG'],
 	function(Button,
 			 ImportingComponentButton,
 			 Image,
@@ -29,7 +31,9 @@ define(['./view/ComponentButton',
 			 ShapesDropdown,
 			 ShapeCollection,
 			 ShapeView,
-			 Shape) {
+			 Shape,
+			 SVGView,
+			 SVG) {
 		var availableShapes = new ShapeCollection();
 		var service = {
 			createButtons: function(editorModel) {
@@ -77,6 +81,16 @@ define(['./view/ComponentButton',
 					{class: 'group-dropdown',
 						editorModel: editorModel}
 				));
+
+				buttons.push(new ImportingComponentButton({
+					componentType: 'SVG',
+					icon: 'icon-star-empty',
+					name: lang.svg,
+					tag: 'svg',
+					title: lang.insert_svg,
+					editorModel: editorModel,
+					browsable: true
+				}));
 
 				return buttons;
 			}
