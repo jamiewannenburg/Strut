@@ -40,6 +40,7 @@ function(Backbone, SlideWell, OperatingTable, MarkdownEditor) {
 			this._saveCurrentEdits();
 			this._prevSlide = slide;
 			this._markdownEditor.setValue(slide && slide.get('markdown'));
+            this.model._editorModel.registry.emit('jamiewannenburg:updateMath');
 		},
 
 		_modeChanged: function(model, mode) {
