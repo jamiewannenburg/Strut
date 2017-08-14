@@ -1,11 +1,10 @@
 /*
 @author Matt Crinklaw-Vogt
 */
-define(['libs/backbone', 'libs/imgup'],
-function(Backbone, Imgup) {
+define(['libs/backbone'],
+function(Backbone) {
 	var modalCache = {};
 	var reg = /[a-z]+:/;
-	var imgup = new Imgup('847de02274cba30');
 
 	var ignoredVals = {
 		'http:': true,
@@ -43,25 +42,17 @@ function(Backbone, Imgup) {
 			var f, reader,
 				_this = this;
 			f = e.target.files[0];
-			if (!f.type.match('image.*'))
+			if (!f.type.match('image.svg'))
                 return;
             
-            this._switchToProgress();
-            this.item.src = '';
-
-            imgup.upload(f).progress(function(ratio) {
-                _this._updateProgress(ratio);
-            }).then(function(result) {
-                _this._switchToThumbnail();
-                _this.$input.val(result.data.link);
-                _this.urlChanged({
-                    which: -1
-                });
-            }, function() {
-                _this._updateProgress(0);
-                _this._switchToThumbnail();
-                _this.$input.val('Failed to upload image to imgur');
-            });
+            reader = new FileReader();
+            reader.onload = function(e) {
+              _this.$input.val(e.target.result);
+              _this.urlChanged({
+                which: -1
+              });
+            };
+            reader.readAsDataURL(f);
 		},
 		browseClicked: function() {
 			return this.$el.find('input[type="file"]').click();
@@ -89,7 +80,7 @@ function(Backbone, Imgup) {
 			if (r == null || r.index != 0) {
 				val = 'http://' + val;
 			}
-            console.log(val);
+            
 			this.item.src = val;
 			return this.src = this.item.src;
 		},
@@ -115,15 +106,11 @@ function(Backbone, Imgup) {
 		},
 		render: function() {
 			var _this = this;
-			this.$el.html(JST["tantaman.web.widgets/ItemImportModal"](this.options));
+			this.$el.html(JST["jamiewannenburg.web.widgets/ItemImportModal"](this.options));
 			this.$el.modal();
 			this.$el.modal("hide");
 			this.item = this.$el.find(this.options.tag)[0];
-			if (this.options.tag === "video") {
-				this.$el.find(".modal-body").prepend("<div class='alert alert-success'>Supports <strong>webm & YouTube</strong>.<br/>Try out: http://www.youtube.com/watch?v=vHUsdkmr-SM</div>");
-			} //else if (this.options.tag === "svg") {
-				// this.$el.find(".modal-body").prepend("<div class='alert alert-success'>Hello</div>");
-			// }
+			this.$el.find(".modal-body").prepend("<div class='alert alert-success'>Hello</div>");
 			if (!this.options.ignoreErrors) {
 				this.item.onerror = function() {
 					return _this._itemLoadError();
@@ -139,9 +126,9 @@ function(Backbone, Imgup) {
 
 			return this.$el;
 		},
-		constructor: function ItemImportModal() {
-		Backbone.View.prototype.constructor.apply(this, arguments);
-	}
+		constructor: function SVGImportModal() {
+            Backbone.View.prototype.constructor.apply(this, arguments);
+        }
 	});
 
 	return {

@@ -22,6 +22,7 @@ define(["./ComponentView"],
 			 */
 			render: function() {
 				var $frame, scale;
+                console.log(this);
 				ComponentView.prototype.render.call(this);
 				$frame = $("<iframe width='960' height='768' src=" + (this.model.get('src')) + "></iframe>");
 				this.$el.find(".content").append($frame);

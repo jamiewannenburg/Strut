@@ -15,7 +15,9 @@ define(['./view/ComponentButton',
 	'./view/ShapeView',
 	'./model/Shape',
     './view/SVGView',
-    './model/SVG'],
+    './model/SVG',
+	'./view/SVGComponentButton'
+    ],
 	function(Button,
 			 ImportingComponentButton,
 			 Image,
@@ -33,7 +35,8 @@ define(['./view/ComponentButton',
 			 ShapeView,
 			 Shape,
 			 SVGView,
-			 SVG) {
+			 SVG,
+			 SVGComponentButton) {
 		var availableShapes = new ShapeCollection();
 		var service = {
 			createButtons: function(editorModel) {
@@ -82,7 +85,7 @@ define(['./view/ComponentButton',
 						editorModel: editorModel}
 				));
 
-				buttons.push(new ImportingComponentButton({
+				buttons.push(new SVGComponentButton({
 					componentType: 'SVG',
 					icon: 'icon-star-empty',
 					name: lang.svg,
@@ -149,6 +152,13 @@ define(['./view/ComponentButton',
 				}, ImageView);
 
 				registry.register({
+					interfaces: 'strut.ComponentModel',
+					meta: {
+						type: 'SVG'
+					}
+				}, SVG);
+
+				registry.register({
 					interfaces: 'strut.ComponentView',
 					meta: {
 						type: 'TextBox'
@@ -175,6 +185,13 @@ define(['./view/ComponentButton',
 						type: 'Shape'
 					}
 				}, ShapeView);
+
+				registry.register({
+					interfaces: 'strut.ComponentView',
+					meta: {
+						type: 'SVG'
+					}
+				}, SVGView);
 
 				ComponentFactory.initialize(registry);
 			}

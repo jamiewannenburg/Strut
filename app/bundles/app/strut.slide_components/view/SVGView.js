@@ -1,5 +1,5 @@
-define(["./ComponentView"],
-	function(ComponentView) {
+define(["./ComponentView", './Mixers'],
+	function(ComponentView,Mixers) {
 
 		/**
 		 * @class SVGView
@@ -12,7 +12,10 @@ define(["./ComponentView"],
 			 * Initialize SVGView component view.
 			 */
 			initialize: function() {
-				return ComponentView.prototype.initialize.apply(this, arguments);
+				ComponentView.prototype.initialize.apply(this, arguments);
+                this.scale = Mixers.scaleObjectEmbed;
+                this.model.off("change:scale", this._setUpdatedTransform, this);
+                this.model.on('change:scale', Mixers.scaleChangeInlineSvg, this);
 			},
 
 			/**
@@ -21,17 +24,29 @@ define(["./ComponentView"],
 			 * @returns {*}
 			 */
 			render: function() {
-				var $frame, scale;
 				ComponentView.prototype.render.call(this);
-				$frame = $("<iframe width='960' height='768' src=" + (this.model.get('src')) + "></iframe>");
-				this.$el.find(".content").append($frame);
-				this.$el.append('<div class="overlay"></div>');
-				scale = this.model.get('scale');
-				this.$el.css({
-					width: 960 * scale.x,
-					height: 768 * scale.y
-				});
-				return this.$el;
-			}
+                var obj = this.model.get('markup')
+                this.$object = $(obj);
+
+                var scale = this.model.get('scale');
+
+                var $content = this.$el.find('.content');
+                $content.append(this.$object);
+
+                if (scale && scale.width) {
+                    this.$object.attr(scale);
+                } else {
+                    // TODO: initialize scale to original
+                    scale = {
+                        width: 960,
+                        height: 768
+                    };
+                    this.model.attributes.scale = scale;
+                    this.$object.attr(scale);
+                }
+                
+                return this.$el;
+			},
+            
 		});
 	});

@@ -57,6 +57,7 @@ require.config({
 		'tantaman/web/css_manip': '../bundles/common/tantaman.web.css_manip',
 		'mathjax': 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML',
 		'jamiewannenburg/web/mathjax': '../bundles/common/jamiewannenburg.web.mathjax',
+		'jamiewannenburg/web/widgets': '../bundles/common/jamiewannenburg.web.widgets',
 		// end build - rmap
 	},
 

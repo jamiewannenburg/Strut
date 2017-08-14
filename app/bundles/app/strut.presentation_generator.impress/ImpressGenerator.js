@@ -39,6 +39,9 @@ function(Handlebars, Math2, marked, DeckUtils) {
 					case "Shape":
 						result = JST["strut.presentation_generator.impress/Shape"](componentModel.attributes);
 						break;
+					case "SVG":
+						result = JST["strut.presentation_generator.impress/Shape"](componentModel.attributes);
+						break;
 				}
 				return new Handlebars.SafeString(result);
 			});
