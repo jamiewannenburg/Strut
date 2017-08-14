@@ -53,6 +53,7 @@
 
 <script type="text/javascript" src="scripts/dataset-shim.js"></script>
 <script type="text/javascript" src="scripts/impress.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script src="scripts/onready.js"></script>
 <script src="scripts/loadPresentation.js"></script>
@@ -92,6 +93,11 @@ ready(function() {
         document.querySelector(".hint").innerHTML = 
             "<p>Tap on the left or right to navigate</p>";
     }
+    document.addEventListener('impress:stepenter',function(e){
+        $(e.target).find('animateTransform').each(function(){
+            this.beginElement();
+        });
+    });
 });
 </script>
 </head>

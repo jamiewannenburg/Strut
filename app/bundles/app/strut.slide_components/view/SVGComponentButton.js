@@ -45,6 +45,10 @@ define(['libs/backbone','./ComponentButton', 'jamiewannenburg/web/widgets/SVGImp
 			 * @private
 			 */
 			_finishImport: function($svg) {
+                $svg.find('animateTransform').each(function(){
+                    $(this).attr('begin','indefinite');
+                });
+                
 				this.options.editorModel.addComponent({
 					markup: $svg.prop('outerHTML'),
 					type: this.options.componentType
