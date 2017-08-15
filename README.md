@@ -1,3 +1,10 @@
+**Note on fork:** in this fork I have added support of Mathjax and animated SVGs.
+
+Original at https://github.com/tantaman/Strut
+
+----------------------------------------------------------------------------------------------------------
+
+
 **Note:** I've been working on Strut2.0: https://github.com/tantaman/strut2
 
 Strut
