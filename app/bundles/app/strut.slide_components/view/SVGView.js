@@ -36,13 +36,14 @@ define(["./ComponentView", './Mixers'],
                 if (scale && scale.width) {
                     this.$object.attr(scale);
                 } else {
-                    // TODO: initialize scale to original
                     scale = {
-                        width: 960,
-                        height: 768
+                        width: this.$object.attr('width'),
+                        height: this.$object.attr('height')
                     };
                     this.model.attributes.scale = scale;
                     this.$object.attr(scale);
+                    this.model.setInt("x", 0);
+                    this.model.setInt("y", 0);
                 }
                 
                 return this.$el;
