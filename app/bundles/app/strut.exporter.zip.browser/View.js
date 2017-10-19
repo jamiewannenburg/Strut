@@ -6,16 +6,16 @@ function(Backbone, Archiver, lang) {
 			this.$el.html(
 				'<div class="alert alert-info">The most effective way to archive your rendered presentation is to:<p>' +
 				'<ol><li>Click the <div class="btn-group iconBtns"><button class="btn btn-success disabled"><i class="icon-play icon-white"></i>Present</button></div> button</li><li>Press <code>Ctrl+S</code>(windows) or <code>⌘+S</code>(Mac) to save the entire presentation to disk.</li></ol></p>'
-				//+ '</div><div class="alert alert-success">Click below to continue downloading the generated zip</div>'
+				+ '</div><div class="alert alert-success">Click below to download the generated html, copy contents of preview_export folder and replace the html file.</div>'
 				);
 		},
 
 		show: function($container, $modal) {
 			this._$modal = $modal;
 			var $ok = this._$modal.find('.ok');
-			//this._makeDownloadable($ok);
+			this._makeDownloadable($ok);
 
-			$ok.html('');
+			$ok.html('<i class="icon-download-alt icon-white"></i>');
 			$container.append(this.$el);
 		},
 
@@ -40,7 +40,7 @@ function(Backbone, Archiver, lang) {
 
 		hidden: function() {
 			var $ok = this._$modal.find('.ok');
-			// window.URL.revokeObjectURL($ok.attr('href'));
+			window.URL.revokeObjectURL($ok.attr('href'));
 		},
 
 		render: function() {
