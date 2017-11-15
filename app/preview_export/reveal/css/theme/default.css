@@ -18,7 +18,16 @@ html, body {
   font-size: 36px;
   font-weight: 200;
   letter-spacing: -0.02em;
-  color: #333; }
+  color: #333;
+  /* center markdown */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width:100%;
+  margin: 0 auto;}
 
 .themedArea h1,
 .themedArea h2,
